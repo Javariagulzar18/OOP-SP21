@@ -1,0 +1,49 @@
+public class Calculator {
+    public static double number_1;
+    public static double number_2;
+    public static double sum(double number_1, double number_2){
+        return (number_1 + number_2);
+    }
+    public static double multiply(double number_1, double number_2){
+        return (number_1 * number_2);
+    }
+    public static double divide(double number_1, double number_2){
+        return (number_1 / number_2);
+    }
+    public static double modulus(double number_1, double number_2){
+        return (number_1 % number_2);
+    }
+    public static double sin(double s){
+        return (Math.sin(s));
+    }
+    public static double cos(double c){
+        return (Math.cos(c));
+    }
+    public static double tan(double t){
+        return (Math.tan(t));
+    }
+}
+import java.util.Scanner;
+
+public class Calculator_Runner{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Performing following operations: sum,multiply,divide,modulus,sin,cos,tan");
+        System.out.println("Enter the numbers:");
+        System.out.println("Enter first number: ");
+        double number_1 = input.nextInt();
+        System.out.println("Enter second number: ");
+        double number_2 = input.nextInt();
+        System.out.println("Sum of two numbers is : " + Calculator.sum(number_1, number_2));
+        System.out.println("Product of two numbers is :" + Calculator.multiply(number_1, number_2));
+        System.out.println("Dividing two numbers :" + Calculator.divide(number_1,number_2));
+        System.out.println("Modulus of two numbers is : " + Calculator.modulus(number_1,number_2));
+        System.out.println("sin of first number is :" + Calculator.sin(number_1));
+        System.out.println("sin of second number is : " + Calculator.sin(number_2));
+        System.out.println("cos of first number is : " + Calculator.cos(number_1));
+        System.out.println("cos of second number is : " + Calculator.cos(number_2));
+        System.out.println("tan of first number is :" + Calculator.tan(number_1));
+        System.out.println("tan of second number is :" + Calculator.tan(number_2));
+    }
+}
+
