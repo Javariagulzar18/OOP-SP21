@@ -1,0 +1,102 @@
+public class Pizza {
+    private String pizza_size;
+    private int no_of_cheeseToppings;
+    private int no_of_pepperoniToppings;
+    private int no_of_hamToppings;
+
+    public Pizza(){
+    }
+    public Pizza(String size_of_pizza, int cheese_toppings, int pepperoni_toppings, int ham_toppings){
+        this.pizza_size = size_of_pizza;
+        this.no_of_cheeseToppings = cheese_toppings;
+        this.no_of_pepperoniToppings = pepperoni_toppings;
+        this.no_of_hamToppings = ham_toppings;
+    }
+    public void setPizza_size(String pizza_size) {
+        this.pizza_size = pizza_size;
+    }
+    public String getPizza_size() {
+        return pizza_size;
+    }
+    public void setNo_of_cheeseToppings(int no_of_cheeseToppings) {
+        this.no_of_cheeseToppings = no_of_cheeseToppings;
+    }
+    public int getNo_of_cheeseToppings() {
+        return no_of_cheeseToppings;
+    }
+    public void setNo_of_pepperoniToppings(int no_of_pepperoniToppings) {
+        this.no_of_pepperoniToppings = no_of_pepperoniToppings;
+    }
+    public int getNo_of_pepperoniToppings() {
+        return no_of_pepperoniToppings;
+    }
+    public void setNo_of_hamToppings(int no_of_hamToppings) {
+        this.no_of_hamToppings = no_of_hamToppings;
+    }
+    public int getNo_of_hamToppings() {
+        return no_of_hamToppings;
+    }
+    public double CalculateCost(){
+        if (pizza_size == "Small"){
+            double pizza_cost = 10 + ((2 * no_of_cheeseToppings) + (2 * no_of_pepperoniToppings)
+                    + (2 * no_of_hamToppings));
+            return pizza_cost;
+        }
+        else if(pizza_size == "Medium"){
+            double pizza_cost = 12 + ((2 * no_of_cheeseToppings) + (2 * no_of_pepperoniToppings)
+                    + (2 * no_of_hamToppings));
+            return pizza_cost;
+        }
+        else if(pizza_size == "Large"){
+            double pizza_cost = 14 + ((2 * no_of_cheeseToppings) + (2 * no_of_pepperoniToppings)
+                    + (2 * no_of_hamToppings));
+            return pizza_cost;
+        }
+        return 0;
+    }
+    public String getDescription(){
+        return ("You placed an order of  " + pizza_size + " pizza with " + no_of_cheeseToppings +
+                " cheese toppings," + no_of_pepperoniToppings + " pepperoni toppings and "
+                + no_of_hamToppings + " ham toppings");
+    }
+}
+public class PizzaOrder {
+    static Pizza[] p1 = new Pizza[3];
+    private static int x = 0;
+    public PizzaOrder(Pizza pizza){
+        p1[x] = pizza;
+        x++;
+    }
+    public static double calculateTotal() {
+        double Bill = 0;
+        for(int y = 0; y < x; y++){
+            double Bill1 = p1[y].CalculateCost();
+            Bill = Bill + Bill1;
+        }
+        return Bill;
+    }
+}
+public class PizzaRunner {
+    public static void main(String[] args) {
+        System.out.println("Maximum number of orders that can be placed is 3.");
+
+        Pizza pizza_1 = new Pizza("Small",3,2,5);
+        System.out.println(pizza_1.getDescription() + " for Rs." + pizza_1.CalculateCost());
+
+        Pizza pizza_2 = new Pizza();
+        pizza_2.setPizza_size("Large");
+        pizza_2.setNo_of_cheeseToppings(1);
+        pizza_2.setNo_of_pepperoniToppings(4);
+        pizza_2.setNo_of_hamToppings(3);
+        System.out.println(pizza_2.getDescription() + " for Rs." + pizza_2.CalculateCost());
+
+        Pizza pizza_3 = new Pizza("Medium",4,2,6);
+        System.out.println(pizza_3.getDescription() + " for Rs." + pizza_3.CalculateCost());
+
+        PizzaOrder pizzaOrder_1 = new PizzaOrder(pizza_1);
+        PizzaOrder pizzaOrder_2 = new PizzaOrder(pizza_2);
+        PizzaOrder pizzaOrder_3 = new PizzaOrder(pizza_3);
+
+        System.out.println("Your total bill is Rs." + PizzaOrder.calculateTotal());
+    }
+}
