@@ -1,0 +1,256 @@
+// Question 1
+public class publication {
+
+protected String title;
+
+protected String price;
+
+public publication(){
+
+}
+
+public publication(String title, String price){
+
+this.title = title;
+
+this.price= price;
+
+}
+
+public void setTile(String title){
+
+this.title = title;
+
+}
+
+public void setPrice(String price){
+
+this.price = price;
+
+}
+
+public String getTitle(){
+
+return title;
+
+}
+
+public String getPrice(){
+
+return price;
+
+}
+
+public void display(){
+
+System.out.println("Title is: "+getTitle());
+
+System.out.print("Price is: "+getPrice());
+
+}
+
+}
+public class book extends publication{
+
+protected String pagecount;
+
+public book(){
+
+super();
+
+}
+
+public book(String title, String price,String pagecount){
+
+super(title, price);
+
+this.pagecount = pagecount;
+
+}
+
+public void setPageCount(String pagecount){
+
+this.pagecount = pagecount;
+
+}
+
+public String getPageCount(){
+
+return pagecount;
+
+}
+
+public void display(){
+
+System.out.println("\n");
+
+super.display();
+
+System.out.println("\nPage Count : "+getPageCount()+"\n");
+
+}
+
+}
+public class tape extends publication {
+
+protected String mins;
+
+public tape(){
+
+super();
+
+}
+
+public tape(String title, String price, String mins){
+
+super(title, price);
+
+this.mins = mins;
+
+}
+
+public void setmins(String mins){
+
+this.mins = mins;
+
+}
+
+public String getmins(){
+
+return mins;
+
+}
+
+public void display(){
+
+System.out.println("\n ");
+
+super.display();
+
+System.out.println("\nRunning Time : "+getmins()+"\n");
+
+}
+
+}
+public class publication_runner {
+
+public static void main (String[]args){
+
+publication p = new publication();
+
+p.setTile("Gulliver's Travels");
+
+p.setPrice("$ 3");
+
+p.display();
+
+book b = new book("Tom Jones", "$ 2", "340");
+
+b.display();
+
+tape t = new tape("Emma", "$ 4", "80 minutes");
+
+t.display();
+
+}
+
+} 
+// Question 2
+public class Computer {
+
+protected String wordsize;
+
+protected String memorysize;
+
+protected String storagesize;
+
+protected String speed;
+
+public Computer(){
+
+}
+
+public Computer(String a, String b, String c, String d){
+
+this.wordsize = a;
+
+this.memorysize = b;
+
+this.storagesize= c;
+
+this.speed= d;
+
+}
+
+public void display(){
+
+System.out.println("word size :"+this.wordsize);
+
+System.out.println("memory size :"+this.memorysize);
+
+System.out.println("storage size :"+this.storagesize);
+
+System.out.println("speed :"+this.speed);
+
+}
+
+}
+public class laptop extends Computer{
+
+protected String lenght;
+
+protected String width;
+
+protected String height;
+
+protected String weight;
+
+public laptop(){
+
+super();
+
+}
+
+public laptop(String a, String b, String c, String d, String e, String f, String g, String h){
+
+super(a, b, c, d);
+
+this.lenght = e;
+
+this.width = f;
+
+this.height = g;
+
+this.weight = h;
+
+}
+
+public void display(){
+
+System.out.println("\n");
+
+super.display();
+
+System.out.println("length is:"+this.lenght);
+
+System.out.println("width is:"+this.width);
+
+System.out.println("height is:"+this.height);
+
+System.out.println("weight is:"+this.weight);
+
+}
+
+}
+public class Computer_runner {
+    public static void main (String[]args){
+        
+        Computer comp = new Computer("32 bits", " 1500 bytes", "350000 bytes", "1600 mega hertz");
+        comp.display();
+        
+        laptop lap = new laptop("64 bits", " 3550 bytes", "60000 bytes", "6400 megahertz", "340cm", "120cm", "265cm", "2kg");
+        lap.display();
+        
+    }
+    
+}
