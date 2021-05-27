@@ -1,0 +1,135 @@
+public interface Shape {
+
+     public double area();
+
+}
+
+public class Rectangle implements Shape {
+
+    private double length;
+
+    private double width;
+
+ 
+
+    Rectangle(double length, double width) {
+
+        this.length = length;
+
+        this.width = width;
+
+    }
+
+    @Override
+
+    public double area() {
+
+ 
+
+        return (length * width);
+
+    }
+
+}
+
+public class Circle implements Shape {
+
+    private double radius;
+
+ 
+
+    Circle(double radius){
+
+        this.radius=radius;
+
+ 
+
+    }
+
+    @Override
+
+    public double area() {
+
+        return (Math.PI * radius*radius);
+
+    }
+
+}
+
+public class Triangle implements Shape {
+
+    private double base;
+
+    private double height;
+
+ 
+
+    Triangle(double base, double height) {
+
+        this.base = base;
+
+        this.height = height;
+
+    }
+
+ 
+
+    @Override
+
+    public double area() {
+
+        return  0.5 * base * height ;
+
+    }
+
+}
+
+public class CalculateAreas {
+
+    public static double[] Area(Shape[] shape) {
+
+        double[] a = new double[shape.length];
+
+        for (int i = 0; i < shape.length; i++) {
+
+            if (shape[i] != null) {
+
+                a[i] = shape[i].area();
+
+            }
+
+        }
+
+        return a;
+
+    }
+
+}
+
+public class Runner {
+
+    public static void main(String[] args) {
+
+        Shape[] shape = new Shape[3];
+
+        shape[0] = new Circle(6);
+
+        shape[1] = new Rectangle(5, 10);
+
+        shape[2] = new Triangle(6, 2);
+
+ 
+
+        double areas[] = CalculateAreas.Area(shape);
+
+        for (double area : areas) {
+
+            System.out.println(area);
+
+        }
+
+    }
+
+}
+
+ 
