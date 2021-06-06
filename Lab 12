@@ -1,0 +1,277 @@
+public class Person
+
+{
+
+    protected String name;
+
+    protected String id;
+
+ 
+
+    public Person(String name, String id)
+
+    {
+
+        this.name = name;
+
+        this.id = id;
+
+    }
+
+    public String toString()
+
+    {
+
+        return "Name:\t" + name + "\nID:\t" + id;
+
+    }
+
+       
+
+}
+
+public interface Association {
+
+    void associate();
+
+   
+
+}
+
+import java.util.Scanner;
+
+ 
+
+public class Teacher  extends Person implements Association
+
+{
+
+    private String designation;
+
+    private String department;
+
+ 
+
+    public Teacher(String name, String id)
+
+    {
+
+        super(name,id);
+
+    }
+
+   
+
+    public void associate()
+
+    {
+
+        Scanner input = new Scanner(System.in);
+
+       
+
+        System.out.println("Enter Desingnation,");
+
+        this.designation = input.nextLine();
+
+        System.out.println("Enter Department,");
+
+        this.department = input.nextLine();
+
+        input.close();
+
+    }
+
+   
+
+     public String toString()
+
+    {
+
+        return "   TEACHER\n" + super.toString() +  "\nDesignation:\t" + designation + "\nDepartment:\t" + department;
+
+    }
+
+   
+
+}
+
+import java.util.Scanner;
+
+ 
+
+public class Student extends Person implements Association
+
+{
+
+    private int rollNum;
+
+    private int semester;
+
+ 
+
+    public Student(String name, String id)
+
+    {
+
+        super(name, id);
+
+    }
+
+   
+
+    public void associate()
+
+    {
+
+        Scanner input = new Scanner(System.in);
+
+       
+
+        System.out.println("Enter Roll Number,");
+
+        this.rollNum = input.nextInt();
+
+        System.out.println("Enter Semester,");
+
+        this.semester = input.nextInt();
+
+        input.close();
+
+        
+
+    }
+
+   
+
+     public String toString()
+
+    {
+
+        return "   STUDENT\n" + super.toString() + "\nRoll Number:\t" + rollNum + "\nSemester:\t" + semester;
+
+    }
+
+   
+
+    
+
+}
+
+import java.util.ArrayList;
+
+public class HumanResource {
+
+   
+
+    private ArrayList<Association> resources;
+
+ 
+
+    public HumanResource(){
+
+        resources = new ArrayList<>();
+
+    }
+
+   
+
+    public void add(Association r){
+
+        resources.add(r);
+
+    }
+
+    public boolean delete(String ID){
+
+       
+
+        for(int i = 0; i<resources.size(); i++){
+
+            if(((Person)resources.get(i)).id == ID){
+
+                resources.remove(i);
+
+                return true;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
+    public void display(){
+
+        for(int i = 0; i <resources.size();i++){
+
+            System.out.println();
+
+            System.out.println(i+"-"+resources.get(i).toString());
+
+            System.out.println();
+
+        }
+
+    }
+
+    public String toString(){
+
+        return " ";
+
+    }
+
+ 
+
+}
+
+}
+
+public class Runner
+
+{
+
+     public static void main(String[] args)
+
+    {
+
+        HumanResource s = new HumanResource();
+
+       
+
+        s.add( new Teacher("Mukhtar", "56432") );
+
+        s.add( new Teacher("Azeem", "34675") );
+
+        s.add( new Teacher("Ahmad", "76543") );
+
+        s.add( new Student("Amna", "987554") );
+
+        s.add( new Student("Ali", "457997") );
+
+        s.add( new Student("Saba", "854125") );
+
+       
+
+        s.display();
+
+       
+
+        Association a = new Student("student", "12423");
+
+        a.associate();
+
+        Association b = new Student("teacher", "12423");
+
+        b.associate();
+
+    }
+
+              
+
+}
+
+ 
+
+ 
